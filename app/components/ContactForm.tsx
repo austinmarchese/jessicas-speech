@@ -6,7 +6,7 @@ export default function ContactForm() {
   const [referralSource, setReferralSource] = useState('')
 
   return (
-    <form action="https://formsubmit.co/jessicaspeechandfeeding@gmail.com" method="POST" className="space-y-4 md:space-y-6">
+    <form action="https://formsubmit.co/jessica.njslp@gmail.com" method="POST" className="space-y-4 md:space-y-6">
       <input type="hidden" name="_subject" value="New inquiry from Jessica's Speech website!" />
       <input type="hidden" name="_captcha" value="false" />
       <input type="hidden" name="_next" value="https://jessicaspeechandfeeding.com/thank-you" />

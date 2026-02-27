@@ -93,7 +93,7 @@ export default function RootLayout({
     description: 'Holistic, compassionate in-home speech and feeding therapy for children in Hoboken, Jersey City, and Weehawken. SOFFI® Certified, PROMPT-trained Speech-Language Pathologist.',
     url: 'https://jessicaspeechandfeeding.com',
     telephone: '',
-    email: 'jessicaspeechandfeeding@gmail.com',
+    email: 'jessica.njslp@gmail.com',
     image: 'https://jessicaspeechandfeeding.com/images/headshot.webp',
     logo: 'https://jessicaspeechandfeeding.com/images/logo.png',
     priceRange: '$$',
