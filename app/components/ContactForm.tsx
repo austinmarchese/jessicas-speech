@@ -9,7 +9,7 @@ export default function ContactForm() {
     <form action="https://formsubmit.co/jessica.njslp@gmail.com" method="POST" className="space-y-4 md:space-y-6">
       <input type="hidden" name="_subject" value="New inquiry from Jessica's Speech website!" />
       <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_next" value="https://jessicaspeechandfeeding.com/thank-you" />
+      <input type="hidden" name="_next" value="https://jessicas-speech.vercel.app/thank-you" />
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label className="block text-gray-700 mb-2 text-sm md:text-base">First name *</label>
