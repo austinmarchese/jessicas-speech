@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     description: 'Recommended books on pediatric speech therapy, feeding challenges, tongue ties, and child development.',
   },
   alternates: {
-    canonical: 'https://jessicaspeechandfeeding.com/resources',
+    canonical: 'https://jessicasspeechandfeeding.com/resources',
   },
 }
 

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     description: 'Expert-recommended feeding tools for babies and toddlers. Utensils, cups, plates, and accessories to support your child\'s feeding journey.',
   },
   alternates: {
-    canonical: 'https://jessicaspeechandfeeding.com/feeding-tools',
+    canonical: 'https://jessicasspeechandfeeding.com/feeding-tools',
   },
 }
 

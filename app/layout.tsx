@@ -9,7 +9,7 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://jessicaspeechandfeeding.com'),
+  metadataBase: new URL('https://jessicasspeechandfeeding.com'),
   title: {
     default: 'Hoboken Pediatric In-Home Speech and Feeding Therapy | Jessica\'s Speech and Feeding',
     template: '%s | Jessica\'s Speech and Feeding'
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://jessicaspeechandfeeding.com',
+    url: 'https://jessicasspeechandfeeding.com',
     siteName: 'Jessica\'s Speech and Feeding Therapy',
     title: 'Hoboken Pediatric In-Home Speech and Feeding Therapy',
     description: 'Holistic, compassionate speech and feeding therapy in Hoboken. In-home pediatric therapy for feeding challenges, speech delays, and more. SOFFI® Certified, PROMPT-trained.',
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     images: ['/images/headshot.webp'],
   },
   alternates: {
-    canonical: 'https://jessicaspeechandfeeding.com',
+    canonical: 'https://jessicasspeechandfeeding.com',
   },
   category: 'Health',
   verification: {
@@ -88,14 +88,14 @@ export default function RootLayout({
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    '@id': 'https://jessicaspeechandfeeding.com',
+    '@id': 'https://jessicasspeechandfeeding.com',
     name: 'Jessica\'s Speech and Feeding Therapy',
     description: 'Holistic, compassionate in-home speech and feeding therapy for children in Hoboken, Jersey City, and Weehawken. SOFFI® Certified, PROMPT-trained Speech-Language Pathologist.',
-    url: 'https://jessicaspeechandfeeding.com',
+    url: 'https://jessicasspeechandfeeding.com',
     telephone: '',
     email: 'jessica.njslp@gmail.com',
-    image: 'https://jessicaspeechandfeeding.com/images/headshot.webp',
-    logo: 'https://jessicaspeechandfeeding.com/images/logo.png',
+    image: 'https://jessicasspeechandfeeding.com/images/headshot.webp',
+    logo: 'https://jessicasspeechandfeeding.com/images/logo.png',
     priceRange: '$$',
     address: {
       '@type': 'PostalAddress',
