@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/thank-you'],
     },
-    sitemap: 'https://jessicaspeechandfeeding.com/sitemap.xml',
+    sitemap: 'https://jessicasspeechandfeeding.com/sitemap.xml',
   }
 }

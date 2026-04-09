@@ -47,11 +47,12 @@ export default function Home() {
 
       {/* Hero Section with Video Background */}
       <section className="relative min-h-[500px] md:min-h-[722px] flex items-end pt-16 md:pt-20">
-        <video 
-          autoPlay 
-          muted 
-          loop 
+        <video
+          autoPlay
+          muted
+          loop
           playsInline
+          poster="/images/hero-poster.jpg"
           className="absolute inset-0 w-full h-full object-cover"
           style={{ objectPosition: '46% 24%' }}
         >
@@ -59,10 +60,8 @@ export default function Home() {
         </video>
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-6 pb-12 md:pb-20 w-full">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[63px] font-extrabold leading-tight mb-2">
-            <span className="text-[#82b2b7]">The Foundation of Wellness:</span>
-          </h1>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[63px] font-extrabold leading-tight mb-6 md:mb-8">
+            <span className="text-[#82b2b7] block">The Foundation of Wellness:</span>
             <span className="text-[#82b2b7]">breathing, eating, speaking better.</span>
           </h1>
           <Link 

@@ -17,5 +17,26 @@ export default function ResourcesLayout({
 }: {
   children: React.ReactNode
 }) {
-  return children
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Speech & Feeding Resources',
+    description: 'Recommended books on pediatric speech therapy, feeding challenges, tongue ties, and child development.',
+    url: 'https://jessicasspeechandfeeding.com/resources',
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'Jessica\'s Speech and Feeding Therapy',
+      url: 'https://jessicasspeechandfeeding.com',
+    },
+  }
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  )
 }

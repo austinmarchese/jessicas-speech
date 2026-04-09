@@ -11,13 +11,13 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL('https://jessicasspeechandfeeding.com'),
   title: {
-    default: 'Hoboken Pediatric In-Home Speech and Feeding Therapy | Jessica\'s Speech and Feeding',
+    default: 'In-Home Speech and Feeding Therapy | Hoboken, NJ',
     template: '%s | Jessica\'s Speech and Feeding'
   },
   description: 'Holistic, compassionate speech and feeding therapy in Hoboken, NJ. In-home pediatric therapy for feeding challenges, speech delays, tongue ties, picky eating, and more. SOFFI® Certified, PROMPT-trained Speech-Language Pathologist serving Hoboken, Jersey City, and Weehawken.',
   keywords: [
     'speech therapy Hoboken',
-    'feeding therapy Hoboken', 
+    'feeding therapy Hoboken',
     'pediatric speech therapist',
     'in-home speech therapy',
     'tongue tie therapy',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://jessicasspeechandfeeding.com',
     siteName: 'Jessica\'s Speech and Feeding Therapy',
-    title: 'Hoboken Pediatric In-Home Speech and Feeding Therapy',
+    title: 'In-Home Speech and Feeding Therapy | Hoboken, NJ',
     description: 'Holistic, compassionate speech and feeding therapy in Hoboken. In-home pediatric therapy for feeding challenges, speech delays, and more. SOFFI® Certified, PROMPT-trained.',
     images: [
       {
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Hoboken Pediatric In-Home Speech and Feeding Therapy',
+    title: 'In-Home Speech and Feeding Therapy | Hoboken, NJ',
     description: 'Holistic, compassionate speech and feeding therapy in Hoboken. In-home pediatric therapy for feeding challenges, speech delays, and more.',
     images: ['/images/headshot.webp'],
   },
@@ -92,7 +92,7 @@ export default function RootLayout({
     name: 'Jessica\'s Speech and Feeding Therapy',
     description: 'Holistic, compassionate in-home speech and feeding therapy for children in Hoboken, Jersey City, and Weehawken. SOFFI® Certified, PROMPT-trained Speech-Language Pathologist.',
     url: 'https://jessicasspeechandfeeding.com',
-    telephone: '',
+    telephone: '+17323541119',
     email: 'jessica.njslp@gmail.com',
     image: 'https://jessicasspeechandfeeding.com/images/headshot.webp',
     logo: 'https://jessicasspeechandfeeding.com/images/logo.png',
