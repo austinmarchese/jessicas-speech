@@ -60,9 +60,9 @@ export default function Home() {
         </video>
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-6 pb-12 md:pb-20 w-full">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[63px] font-extrabold leading-tight mb-6 md:mb-8">
-            <span className="text-[#82b2b7] block">The Foundation of Wellness:</span>
-            <span className="text-[#82b2b7]">breathing, eating, speaking better.</span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[63px] font-extrabold leading-tight mb-6 md:mb-8 drop-shadow-lg">
+            <span className="text-white block" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.45)' }}>The Foundation of Wellness:</span>
+            <span className="text-white" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.45)' }}>breathing, eating, speaking better.</span>
           </h1>
           <Link 
             href="#contact-us"
