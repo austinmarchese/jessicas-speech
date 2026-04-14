@@ -94,11 +94,11 @@ export default function Home() {
             </h2>
           </div>
           <div className="relative order-1 md:order-2">
-            <Image 
-              src="/images/hero-teaching.webp" 
-              alt="Jessica teaching a child" 
-              width={600} 
-              height={400}
+            <Image
+              src="/images/jessica-with-family.webp"
+              alt="Jessica working with a family and baby during a therapy session"
+              width={600}
+              height={600}
               className="rounded-xl md:rounded-2xl shadow-lg w-full"
             />
           </div>
@@ -107,30 +107,52 @@ export default function Home() {
 
       {/* My Personal Journey */}
       <section className="py-12 md:py-20 px-4 md:px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-800 mb-6 md:mb-8 text-center">My Personal Journey</h2>
-          <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
-            As a speech-language pathologist, I have a deep understanding of the challenges children face when their foundational development is impacted. My personal journey began in childhood when I experienced firsthand the effects of untreated mouth breathing, a tongue thrust, high and narrow palate, a tongue tie, and crowded teeth—from difficulty focusing in school to chronic tiredness.
-          </p>
-          <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
-            Despite receiving a palate expander and a tongue tie release as an older child and a septoplasty in adulthood, the experience left a lasting impression on me. I realized that my own attention and learning challenges were likely connected to these early structural deficits.
-          </p>
-          <p className="text-gray-600 text-base md:text-lg leading-relaxed">
-            This experience revealed the crucial importance of early intervention and education, which is now the driving force behind my practice. My goal is to prevent other children from having to navigate these challenges, offering the proactive support and holistic care that I wish I had received.
-          </p>
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-800 mb-6 md:mb-8">My Personal Journey</h2>
+            <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+              As a speech-language pathologist, I have a deep understanding of the challenges children face when their foundational development is impacted. My personal journey began in childhood when I experienced firsthand the effects of untreated mouth breathing, a tongue thrust, high and narrow palate, a tongue tie, and crowded teeth—from difficulty focusing in school to chronic tiredness.
+            </p>
+            <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+              Despite receiving a palate expander and a tongue tie release as an older child and a septoplasty in adulthood, the experience left a lasting impression on me. I realized that my own attention and learning challenges were likely connected to these early structural deficits.
+            </p>
+            <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+              This experience revealed the crucial importance of early intervention and education, which is now the driving force behind my practice. My goal is to prevent other children from having to navigate these challenges, offering the proactive support and holistic care that I wish I had received.
+            </p>
+          </div>
+          <div className="relative">
+            <Image
+              src="/images/jessica-bubbles.webp"
+              alt="Jessica sitting with therapy toys and bubbles"
+              width={600}
+              height={600}
+              className="rounded-xl md:rounded-2xl shadow-lg w-full"
+            />
+          </div>
         </div>
       </section>
 
       {/* A Holistic Approach */}
       <section className="py-12 md:py-20 px-4 md:px-6 bg-[#f5f0eb]">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-800 mb-6 md:mb-8 text-center">A Holistic Approach</h2>
-          <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
-            I don't just treat a single symptom. I look at your child's entire well-being—from how they sleep and breathe, to their oral-motor development. I also collaborate with other trusted providers (ENT, airway focused dentists, orthodontists) to ensure your child gets comprehensive support for a healthy foundation that lasts a lifetime.
-          </p>
-          <p className="text-gray-600 text-base md:text-lg leading-relaxed text-center font-medium">
-            If you suspect your child may have a feeding, breathing, or speech challenge, let's connect.
-          </p>
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div className="relative">
+            <Image
+              src="/images/jessica-teaching.webp"
+              alt="Jessica teaching parents about feeding techniques"
+              width={600}
+              height={600}
+              className="rounded-xl md:rounded-2xl shadow-lg w-full"
+            />
+          </div>
+          <div>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-800 mb-6 md:mb-8">A Holistic Approach</h2>
+            <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+              I don't just treat a single symptom. I look at your child's entire well-being—from how they sleep and breathe, to their oral-motor development. I also collaborate with other trusted providers (ENT, airway focused dentists, orthodontists) to ensure your child gets comprehensive support for a healthy foundation that lasts a lifetime.
+            </p>
+            <p className="text-gray-600 text-base md:text-lg leading-relaxed font-medium">
+              If you suspect your child may have a feeding, breathing, or speech challenge, let's connect.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -138,11 +160,11 @@ export default function Home() {
       <section id="miss-jessica" className="py-12 md:py-20 px-4 md:px-6 bg-white">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="relative">
-            <Image 
-              src="/images/headshot.webp" 
-              alt="Jessica Aleman" 
-              width={400} 
-              height={500}
+            <Image
+              src="/images/jessica-laughing.webp"
+              alt="Jessica Aleman laughing during a session"
+              width={400}
+              height={400}
               className="rounded-xl md:rounded-2xl shadow-lg w-full max-w-sm md:max-w-md mx-auto"
             />
           </div>
