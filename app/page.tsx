@@ -109,14 +109,19 @@ export default function Home() {
       <section className="py-12 md:py-20 px-4 md:px-6 bg-white">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-800 mb-6 md:mb-8">My Personal Journey</h2>
-            <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-800 mb-4 md:mb-8">My Personal Journey</h2>
+            {/* Condensed mobile version */}
+            <p className="md:hidden text-gray-600 text-base leading-relaxed">
+              As a child, I experienced firsthand the effects of untreated mouth breathing, a tongue tie, and a high, narrow palate. Those early struggles shape my practice today: helping families catch these challenges early so their children don't have to navigate them the way I did.
+            </p>
+            {/* Full desktop version */}
+            <p className="hidden md:block text-gray-600 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
               As a speech-language pathologist, I have a deep understanding of the challenges children face when their foundational development is impacted. My personal journey began in childhood when I experienced firsthand the effects of untreated mouth breathing, a tongue thrust, high and narrow palate, a tongue tie, and crowded teeth—from difficulty focusing in school to chronic tiredness.
             </p>
-            <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+            <p className="hidden md:block text-gray-600 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
               Despite receiving a palate expander and a tongue tie release as an older child and a septoplasty in adulthood, the experience left a lasting impression on me. I realized that my own attention and learning challenges were likely connected to these early structural deficits.
             </p>
-            <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+            <p className="hidden md:block text-gray-600 text-base md:text-lg leading-relaxed">
               This experience revealed the crucial importance of early intervention and education, which is now the driving force behind my practice. My goal is to prevent other children from having to navigate these challenges, offering the proactive support and holistic care that I wish I had received.
             </p>
           </div>
@@ -135,7 +140,7 @@ export default function Home() {
       {/* A Holistic Approach */}
       <section className="py-12 md:py-20 px-4 md:px-6 bg-[#f5f0eb]">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-          <div className="relative">
+          <div className="relative order-2 md:order-1">
             <Image
               src="/images/jessica-teaching.webp"
               alt="Jessica teaching parents about feeding techniques"
@@ -144,14 +149,25 @@ export default function Home() {
               className="rounded-xl md:rounded-2xl shadow-lg w-full"
             />
           </div>
-          <div>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-800 mb-6 md:mb-8">A Holistic Approach</h2>
-            <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
+          <div className="order-1 md:order-2">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-800 mb-4 md:mb-8">A Holistic Approach</h2>
+            {/* Condensed mobile version */}
+            <p className="md:hidden text-gray-600 text-base leading-relaxed mb-4">
+              I don't just treat a single symptom. I look at your child's whole well-being, from sleep and breathing to oral-motor development, and partner with trusted ENTs, airway dentists, and orthodontists for comprehensive care.
+            </p>
+            {/* Full desktop version */}
+            <p className="hidden md:block text-gray-600 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
               I don't just treat a single symptom. I look at your child's entire well-being—from how they sleep and breathe, to their oral-motor development. I also collaborate with other trusted providers (ENT, airway focused dentists, orthodontists) to ensure your child gets comprehensive support for a healthy foundation that lasts a lifetime.
             </p>
-            <p className="text-gray-600 text-base md:text-lg leading-relaxed font-medium">
+            <p className="text-gray-600 text-base md:text-lg leading-relaxed font-medium mb-6 md:mb-0">
               If you suspect your child may have a feeding, breathing, or speech challenge, let's connect.
             </p>
+            <Link
+              href="#contact-us"
+              className="inline-block md:hidden bg-[#82b2b7] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#6a9a9f] transition text-sm uppercase tracking-wide"
+            >
+              Get a Free Consultation
+            </Link>
           </div>
         </div>
       </section>
@@ -159,7 +175,7 @@ export default function Home() {
       {/* About Jessica */}
       <section id="miss-jessica" className="py-12 md:py-20 px-4 md:px-6 bg-white">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-          <div className="relative">
+          <div className="relative order-2 md:order-1">
             <Image
               src="/images/jessica-laughing.webp"
               alt="Jessica Aleman laughing during a session"
@@ -168,11 +184,16 @@ export default function Home() {
               className="rounded-xl md:rounded-2xl shadow-lg w-full max-w-sm md:max-w-md mx-auto"
             />
           </div>
-          <div>
+          <div className="order-1 md:order-2">
             <p className="text-xs md:text-sm uppercase tracking-widest text-[#82b2b7] mb-3 md:mb-4">Your Certified Speech Language Pathologist</p>
             <h2 className="text-3xl md:text-4xl font-light text-gray-800 mb-2">Jessica Aleman</h2>
             <p className="text-lg md:text-xl text-[#82b2b7] mb-4 md:mb-6">MSEd, CCC-SLP</p>
-            <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+            {/* Condensed mobile version */}
+            <p className="md:hidden text-gray-600 text-base leading-relaxed">
+              I'm Jessica, a Hoboken speech-language pathologist. My holistic approach focuses on the foundational connections between breathing, eating, and communication, giving your child a clear path to wellness.
+            </p>
+            {/* Full desktop version */}
+            <p className="hidden md:block text-gray-600 text-base md:text-lg leading-relaxed">
               I'm Jessica, a Hoboken speech-language pathologist dedicated to helping children and families thrive. My passion is rooted in a holistic approach that goes beyond addressing a single symptom. I focus on the foundational connections between breathing, eating, and communication to provide your child with a clear path to wellness. With my experience, compassionate guidance, and commitment to continuous learning, I am here to partner with you and your family on this important journey.
             </p>
           </div>
