@@ -131,33 +131,67 @@ export default function TestimonialCarousel() {
         </p>
       </div>
 
-      {/* Arrows */}
+      {/* Desktop arrows - outside card */}
       <button
         onClick={prev}
-        className="absolute left-1 sm:left-2 md:-left-14 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-800 w-9 h-9 md:w-12 md:h-12 rounded-full shadow-lg flex items-center justify-center transition z-10"
+        className="hidden md:flex absolute -left-14 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-800 w-12 h-12 rounded-full shadow-lg items-center justify-center transition z-10"
         aria-label="Previous testimonial"
       >
-        <svg className="w-4 h-4 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
         </svg>
       </button>
       <button
         onClick={next}
-        className="absolute right-1 sm:right-2 md:-right-14 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-800 w-9 h-9 md:w-12 md:h-12 rounded-full shadow-lg flex items-center justify-center transition z-10"
+        className="hidden md:flex absolute -right-14 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-800 w-12 h-12 rounded-full shadow-lg items-center justify-center transition z-10"
         aria-label="Next testimonial"
       >
-        <svg className="w-4 h-4 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
       </button>
 
-      {/* Dots */}
-      <div className="flex justify-center gap-1.5 md:gap-2 mt-6 md:mt-8 flex-wrap">
+      {/* Mobile controls - below card */}
+      <div className="flex md:hidden items-center justify-center gap-4 mt-5">
+        <button
+          onClick={prev}
+          className="bg-white text-gray-800 w-10 h-10 rounded-full shadow border border-gray-200 flex items-center justify-center transition"
+          aria-label="Previous testimonial"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <div className="flex gap-1.5 flex-wrap justify-center max-w-[200px]">
+          {testimonials.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              className={`w-2 h-2 rounded-full transition ${
+                i === current ? 'bg-[#82b2b7]' : 'bg-gray-300 hover:bg-gray-400'
+              }`}
+              aria-label={`Go to testimonial ${i + 1}`}
+            />
+          ))}
+        </div>
+        <button
+          onClick={next}
+          className="bg-white text-gray-800 w-10 h-10 rounded-full shadow border border-gray-200 flex items-center justify-center transition"
+          aria-label="Next testimonial"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Desktop dots - below card */}
+      <div className="hidden md:flex justify-center gap-2 mt-8 flex-wrap">
         {testimonials.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
-            className={`w-2 h-2 md:w-2.5 md:h-2.5 rounded-full transition ${
+            className={`w-2.5 h-2.5 rounded-full transition ${
               i === current ? 'bg-[#82b2b7]' : 'bg-gray-300 hover:bg-gray-400'
             }`}
             aria-label={`Go to testimonial ${i + 1}`}

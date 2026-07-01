@@ -78,9 +78,19 @@ export default function Home() {
         <HeroIntro />
         <div className="absolute inset-0 bg-black/20 z-[2]"></div>
         <div className="relative z-[3] max-w-6xl mx-auto px-4 md:px-6 pb-12 md:pb-20 w-full">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[63px] font-extrabold leading-tight mb-6 md:mb-8 drop-shadow-lg">
-            <span className="text-white block" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.45)' }}>The Foundation of Wellness:</span>
-            <span className="text-white" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.45)' }}>breathing, eating, speaking better.</span>
+          <h1 className="mb-6 md:mb-8 max-w-3xl">
+            <span
+              className="block text-white font-extrabold leading-[1.05] text-4xl sm:text-5xl md:text-6xl lg:text-[68px] tracking-tight"
+              style={{ textShadow: '0 2px 12px rgba(0,0,0,0.55)' }}
+            >
+              From tiny struggles to big milestones.
+            </span>
+            <span
+              className="block text-white/95 font-light leading-snug text-lg sm:text-xl md:text-2xl lg:text-[28px] mt-3 md:mt-5 max-w-2xl"
+              style={{ textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}
+            >
+              Help your child eat, sleep, and speak with confidence.
+            </span>
           </h1>
           <Link
             href="#contact-us"
@@ -178,17 +188,17 @@ export default function Home() {
               <p className="text-[11px] md:text-xs uppercase tracking-widest text-gray-500 md:whitespace-nowrap">Services</p>
               <div className="flex flex-wrap gap-2">
                 {[
-                  'Feeding Therapy',
-                  'Speech & Language',
-                  'Sleep Intervention',
-                  'TOTs Support',
-                ].map((label) => (
+                  { label: 'Feeding Therapy', href: '#service-feeding' },
+                  { label: 'Speech & Language', href: '#service-speech' },
+                  { label: 'Sleep Intervention', href: '#service-sleep' },
+                  { label: 'TOTs Support', href: '#service-tots' },
+                ].map((item) => (
                   <Link
-                    key={label}
-                    href="#services"
+                    key={item.label}
+                    href={item.href}
                     className="inline-block bg-white border border-[#82b2b7]/40 text-[#82b2b7] hover:bg-[#82b2b7] hover:text-white transition rounded-full px-4 py-1.5 text-xs md:text-sm font-medium"
                   >
-                    {label}
+                    {item.label}
                   </Link>
                 ))}
               </div>
@@ -197,13 +207,17 @@ export default function Home() {
             <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-4">
               <p className="text-[11px] md:text-xs uppercase tracking-widest text-gray-500 md:whitespace-nowrap">Areas I Travel To</p>
               <div className="flex flex-wrap gap-2">
-                {['Hoboken', 'Jersey City', 'Weehawken'].map((label) => (
+                {[
+                  { label: 'Hoboken', href: '#zone-hoboken' },
+                  { label: 'Jersey City', href: '#zone-jersey-city' },
+                  { label: 'Weehawken', href: '#zone-weehawken' },
+                ].map((item) => (
                   <Link
-                    key={label}
-                    href="#service-area"
+                    key={item.label}
+                    href={item.href}
                     className="inline-block bg-[#f5f0eb] border border-transparent text-gray-700 hover:bg-[#82b2b7] hover:text-white transition rounded-full px-4 py-1.5 text-xs md:text-sm font-medium"
                   >
-                    {label}
+                    {item.label}
                   </Link>
                 ))}
               </div>
@@ -295,7 +309,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-4 md:gap-8">
             {/* Feeding Therapy */}
-            <div className="bg-white/10 rounded-xl md:rounded-2xl p-5 md:p-8 backdrop-blur-sm">
+            <div id="service-feeding" className="bg-white/10 rounded-xl md:rounded-2xl p-5 md:p-8 backdrop-blur-sm scroll-mt-24">
               <h3 className="text-xl md:text-2xl font-medium mb-4 md:mb-6">Feeding Therapy</h3>
               <ul className="space-y-2 md:space-y-3 text-sm md:text-base">
                 <li className="flex items-start gap-2 md:gap-3">
@@ -318,7 +332,7 @@ export default function Home() {
             </div>
 
             {/* Speech & Language Therapy */}
-            <div className="bg-white/10 rounded-xl md:rounded-2xl p-5 md:p-8 backdrop-blur-sm">
+            <div id="service-speech" className="bg-white/10 rounded-xl md:rounded-2xl p-5 md:p-8 backdrop-blur-sm scroll-mt-24">
               <h3 className="text-xl md:text-2xl font-medium mb-4 md:mb-6">Speech & Language Therapy</h3>
               <ul className="space-y-2 md:space-y-3 text-sm md:text-base">
                 <li className="flex items-start gap-2 md:gap-3">
@@ -333,7 +347,7 @@ export default function Home() {
             </div>
 
             {/* Sleep Intervention */}
-            <div className="bg-white/10 rounded-xl md:rounded-2xl p-5 md:p-8 backdrop-blur-sm">
+            <div id="service-sleep" className="bg-white/10 rounded-xl md:rounded-2xl p-5 md:p-8 backdrop-blur-sm scroll-mt-24">
               <h3 className="text-xl md:text-2xl font-medium mb-4 md:mb-6">Sleep Intervention</h3>
               <p className="mb-3 md:mb-4 opacity-90 text-sm md:text-base">If you&apos;re concerned about your child&apos;s sleep, I can help with signs like these:</p>
               <ul className="space-y-2 md:space-y-3 text-sm md:text-base">
@@ -361,7 +375,7 @@ export default function Home() {
             </div>
 
             {/* TOTs Support */}
-            <div className="bg-white/10 rounded-xl md:rounded-2xl p-5 md:p-8 backdrop-blur-sm">
+            <div id="service-tots" className="bg-white/10 rounded-xl md:rounded-2xl p-5 md:p-8 backdrop-blur-sm scroll-mt-24">
               <h3 className="text-xl md:text-2xl font-medium mb-4 md:mb-6">Tethered Oral Tissues (TOTs) Support</h3>
               <ul className="space-y-2 md:space-y-3 text-sm md:text-base">
                 <li className="flex items-start gap-2 md:gap-3">
@@ -396,16 +410,19 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-4 md:gap-6">
             {[
               {
+                id: 'zone-hoboken',
                 city: 'Hoboken',
                 zone: 'All of Hoboken',
                 detail: 'Full coverage across every neighborhood.',
               },
               {
+                id: 'zone-jersey-city',
                 city: 'Jersey City',
                 zone: 'East Side of The Heights & Newport',
                 detail: 'Serving families along the waterfront and Heights.',
               },
               {
+                id: 'zone-weehawken',
                 city: 'Weehawken',
                 zone: 'South Weehawken',
                 detail: 'Waterfront and Port Imperial families.',
@@ -413,7 +430,8 @@ export default function Home() {
             ].map((loc) => (
               <div
                 key={loc.city}
-                className="group bg-[#f5f0eb] rounded-2xl p-6 md:p-7 shadow-sm hover:shadow-md transition border border-transparent hover:border-[#82b2b7]/30"
+                id={loc.id}
+                className="group bg-[#f5f0eb] rounded-2xl p-6 md:p-7 shadow-sm hover:shadow-md transition border border-transparent hover:border-[#82b2b7]/30 scroll-mt-24"
               >
                 <div className="flex items-start gap-3 md:gap-4">
                   <div className="w-11 h-11 md:w-12 md:h-12 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm group-hover:bg-[#82b2b7] transition">
