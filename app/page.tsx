@@ -98,15 +98,29 @@ export default function Home() {
             <ReviewStats />
             <p className="text-xs md:text-sm uppercase tracking-widest text-[#82b2b7] mb-3 md:mb-4">Jessica&apos;s Speech and Feeding Therapy</p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-gray-800 mb-4 md:mb-6 leading-tight">
-              Providing Answers & Solutions for Your Child
+              In-Home Speech and Feeding Therapy
             </h2>
+            <div className="flex flex-wrap gap-2 mb-4 md:mb-6">
+              <span className="inline-flex items-center gap-1.5 bg-[#82b2b7] text-white px-3 py-1.5 rounded-full text-xs md:text-sm font-semibold shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5"><path d="M12 3l9 8h-3v9h-4v-6H10v6H6v-9H3l9-8z"/></svg>
+                In Your Home
+              </span>
+              <span className="inline-flex items-center gap-1.5 bg-[#82b2b7] text-white px-3 py-1.5 rounded-full text-xs md:text-sm font-semibold shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5"><path d="M4 6h16v2H4V6zm0 4h16v10H4V10zm3 2v2h4v-2H7z"/></svg>
+                At Daycare
+              </span>
+              <span className="inline-flex items-center gap-1.5 bg-[#82b2b7] text-white px-3 py-1.5 rounded-full text-xs md:text-sm font-semibold shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5"><path d="M17 10.5V7a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1v-3.5l4 4v-11l-4 4z"/></svg>
+                Virtual Sessions
+              </span>
+            </div>
             {/* Condensed mobile version */}
             <p className="md:hidden text-gray-600 text-base leading-relaxed mb-4">
               I look at your child's whole well-being, from sleep and breathing to oral-motor development, and partner with trusted ENTs, airway dentists, and orthodontists for care that lasts.
             </p>
             {/* Full desktop version */}
             <p className="hidden md:block text-gray-600 text-base md:text-lg leading-relaxed mb-6 md:mb-8">
-              I don't just treat a single symptom. I look at your child's whole well-being, from sleep and breathing to oral-motor development, and collaborate with trusted ENTs, airway-focused dentists, and orthodontists for a healthy foundation that lasts a lifetime.
+              I meet children where they're most comfortable and I don't just treat a single symptom. I look at your child's whole well-being, from sleep and breathing to oral-motor development, and collaborate with trusted ENTs, airway-focused dentists, and orthodontists for a healthy foundation that lasts a lifetime.
             </p>
             <p className="text-gray-600 text-base md:text-lg leading-relaxed font-medium mb-6 md:mb-0">
               If you suspect your child may have a feeding, breathing, or speech challenge, let's connect.
