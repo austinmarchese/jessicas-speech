@@ -37,7 +37,7 @@ export default function BookStartingSolids() {
       widgetType: 'checkout',
       eventId: EVENT_ID,
       iframeContainerId: `eventbrite-widget-container-${EVENT_ID}`,
-      iframeContainerHeight: 1600,
+      iframeContainerHeight: 1100,
       themeSettings: {
         brandColor: '#7BADB2',
       },
@@ -142,7 +142,7 @@ export default function BookStartingSolids() {
               <div className="rounded-2xl overflow-hidden shadow-lg bg-white border border-gray-100">
                 <div
                   id={`eventbrite-widget-container-${EVENT_ID}`}
-                  style={{ minHeight: 1600 }}
+                  style={{ minHeight: 1100 }}
                   className="w-full"
                 />
               </div>

@@ -248,8 +248,7 @@ export default function StartingSolids() {
                   src="/images/starting-solids/confident-feeders.jpg"
                   alt="Jessica offering virtual starting solids coaching over video"
                   fill
-                  className="object-cover group-hover:scale-105 transition duration-500"
-                  style={{ objectPosition: '50% 25%' }}
+                  className="object-cover object-[center_35%] md:object-center group-hover:scale-105 transition duration-500"
                 />
               </div>
               <div className="p-6 md:p-7 flex flex-col flex-1">
