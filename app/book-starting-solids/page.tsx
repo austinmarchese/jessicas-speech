@@ -37,7 +37,7 @@ export default function BookStartingSolids() {
       widgetType: 'checkout',
       eventId: EVENT_ID,
       iframeContainerId: `eventbrite-widget-container-${EVENT_ID}`,
-      iframeContainerHeight: 625,
+      iframeContainerHeight: 1600,
       themeSettings: {
         brandColor: '#7BADB2',
       },
@@ -134,51 +134,62 @@ export default function BookStartingSolids() {
         </div>
       </section>
 
-      {/* Prominent booking card (always shows) */}
+      {/* Eventbrite Embed */}
       <section className="py-8 md:py-12 px-4 md:px-6 bg-white">
         <div className="max-w-3xl mx-auto">
-          <div className="rounded-2xl shadow-xl bg-gradient-to-br from-[#82b2b7] to-[#6a9a9f] text-white p-8 md:p-12 text-center">
-            <p className="text-white/80 text-xs md:text-sm uppercase tracking-[0.25em] mb-3">Next Class</p>
-            <h2 className="text-2xl md:text-4xl font-light mb-2">Starting Solids · Parent + Baby</h2>
-            <p className="text-white/90 text-base md:text-lg mb-6">For babies 6–10 months</p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 max-w-xl mx-auto mb-8 text-sm md:text-base">
-              <div className="bg-white/15 rounded-xl px-4 py-3">
-                <p className="text-white/70 text-xs uppercase tracking-wide mb-1">When</p>
-                <p className="font-medium">Monthly · Mon 1:15 PM</p>
+          {!showFallback && (
+            <>
+              <div className="rounded-2xl overflow-hidden shadow-lg bg-white border border-gray-100">
+                <div
+                  id={`eventbrite-widget-container-${EVENT_ID}`}
+                  style={{ minHeight: 1600 }}
+                  className="w-full"
+                />
               </div>
-              <div className="bg-white/15 rounded-xl px-4 py-3">
-                <p className="text-white/70 text-xs uppercase tracking-wide mb-1">Where</p>
-                <p className="font-medium">The Bunny Hive · Hoboken</p>
-              </div>
-              <div className="bg-white/15 rounded-xl px-4 py-3">
-                <p className="text-white/70 text-xs uppercase tracking-wide mb-1">Led by</p>
-                <p className="font-medium">Jessica, MS CCC-SLP</p>
-              </div>
-            </div>
-            <a
-              href={EVENTBRITE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-white text-[#6a9a9f] px-8 py-4 rounded-full font-semibold hover:bg-gray-50 transition text-sm md:text-base uppercase tracking-wide shadow-lg"
-            >
-              Reserve Your Spot →
-            </a>
-            <p className="text-white/70 text-xs mt-4">Booking powered by Eventbrite · Instant confirmation</p>
-          </div>
-        </div>
-      </section>
+              <p className="text-center text-gray-500 text-sm mt-6">
+                Prefer to book on Eventbrite?{' '}
+                <a
+                  href={EVENTBRITE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#82b2b7] font-medium hover:underline"
+                >
+                  Book directly on Eventbrite →
+                </a>
+              </p>
+            </>
+          )}
 
-      {/* Eventbrite Embed (renders when Embedded Checkout is enabled in Eventbrite) */}
-      <section className="py-8 md:py-12 px-4 md:px-6 bg-white border-t border-gray-100">
-        <div className="max-w-3xl mx-auto">
-          <p className="text-center text-xs md:text-sm uppercase tracking-widest text-[#82b2b7] mb-4">Or book directly below</p>
-          <div className="rounded-2xl overflow-hidden shadow-lg bg-white border border-gray-100">
-            <div
-              id={`eventbrite-widget-container-${EVENT_ID}`}
-              style={{ minHeight: 625 }}
-              className="w-full"
-            />
-          </div>
+          {showFallback && (
+            <div className="rounded-2xl shadow-xl bg-gradient-to-br from-[#82b2b7] to-[#6a9a9f] text-white p-8 md:p-12 text-center">
+              <p className="text-white/80 text-xs md:text-sm uppercase tracking-[0.25em] mb-3">Next Class</p>
+              <h2 className="text-2xl md:text-4xl font-light mb-2">Starting Solids · Parent + Baby</h2>
+              <p className="text-white/90 text-base md:text-lg mb-6">For babies 6–10 months</p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 max-w-xl mx-auto mb-8 text-sm md:text-base">
+                <div className="bg-white/15 rounded-xl px-4 py-3">
+                  <p className="text-white/70 text-xs uppercase tracking-wide mb-1">When</p>
+                  <p className="font-medium">Monthly · Mon 1:15 PM</p>
+                </div>
+                <div className="bg-white/15 rounded-xl px-4 py-3">
+                  <p className="text-white/70 text-xs uppercase tracking-wide mb-1">Where</p>
+                  <p className="font-medium">The Bunny Hive · Hoboken</p>
+                </div>
+                <div className="bg-white/15 rounded-xl px-4 py-3">
+                  <p className="text-white/70 text-xs uppercase tracking-wide mb-1">Led by</p>
+                  <p className="font-medium">Jessica, MS CCC-SLP</p>
+                </div>
+              </div>
+              <a
+                href={EVENTBRITE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-white text-[#6a9a9f] px-8 py-4 rounded-full font-semibold hover:bg-gray-50 transition text-sm md:text-base uppercase tracking-wide shadow-lg"
+              >
+                Reserve Your Spot →
+              </a>
+              <p className="text-white/70 text-xs mt-4">Booking powered by Eventbrite · Instant confirmation</p>
+            </div>
+          )}
         </div>
       </section>
 

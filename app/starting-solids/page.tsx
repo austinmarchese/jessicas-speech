@@ -249,6 +249,7 @@ export default function StartingSolids() {
                   alt="Jessica offering virtual starting solids coaching over video"
                   fill
                   className="object-cover group-hover:scale-105 transition duration-500"
+                  style={{ objectPosition: '50% 25%' }}
                 />
               </div>
               <div className="p-6 md:p-7 flex flex-col flex-1">
