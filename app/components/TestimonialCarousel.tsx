@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from 'react'
 
-type Testimonial = {
+export type Testimonial = {
   stars: number
   text: string
   attribution: string
 }
 
-const testimonials: Testimonial[] = [
+const defaultTestimonials: Testimonial[] = [
   {
     stars: 5,
     text: 'Jessica is great! She is so patient and knowledgeable.',
@@ -66,27 +66,28 @@ function Star({ filled = true }: { filled?: boolean }) {
 
 const TRUNCATE_LIMIT = 220
 
-export default function TestimonialCarousel() {
+export default function TestimonialCarousel({ testimonials }: { testimonials?: Testimonial[] } = {}) {
+  const items = testimonials && testimonials.length > 0 ? testimonials : defaultTestimonials
   const [current, setCurrent] = useState(0)
   const [expanded, setExpanded] = useState(false)
 
   useEffect(() => {
     if (expanded) return
     const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % testimonials.length)
+      setCurrent((prev) => (prev + 1) % items.length)
     }, 7000)
     return () => clearInterval(timer)
-  }, [expanded])
+  }, [expanded, items.length])
 
   useEffect(() => {
     setExpanded(false)
   }, [current])
 
   const goTo = (index: number) => setCurrent(index)
-  const prev = () => setCurrent((current - 1 + testimonials.length) % testimonials.length)
-  const next = () => setCurrent((current + 1) % testimonials.length)
+  const prev = () => setCurrent((current - 1 + items.length) % items.length)
+  const next = () => setCurrent((current + 1) % items.length)
 
-  const t = testimonials[current]
+  const t = items[current]
   const isLong = t.text.length > TRUNCATE_LIMIT
   const displayText = isLong && !expanded
     ? t.text.slice(0, TRUNCATE_LIMIT).trimEnd() + '…'
@@ -163,7 +164,7 @@ export default function TestimonialCarousel() {
           </svg>
         </button>
         <div className="flex gap-1.5 flex-wrap justify-center max-w-[200px]">
-          {testimonials.map((_, i) => (
+          {items.map((_, i) => (
             <button
               key={i}
               onClick={() => goTo(i)}
@@ -187,7 +188,7 @@ export default function TestimonialCarousel() {
 
       {/* Desktop dots - below card */}
       <div className="hidden md:flex justify-center gap-2 mt-8 flex-wrap">
-        {testimonials.map((_, i) => (
+        {items.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}

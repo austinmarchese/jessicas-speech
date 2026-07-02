@@ -1,9 +1,60 @@
-'use client'
-
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
 import MobileMenu from '../components/MobileMenu'
+import TestimonialCarousel, { type Testimonial } from '../components/TestimonialCarousel'
+
+const startingSolidsTestimonials: Testimonial[] = [
+  {
+    stars: 5,
+    text: 'We absolutely loved Jessica\'s starting solids class at Krayon Park JC! She is so knowledgeable, warm, and genuinely such a joy to learn from. She explains everything in such a simple, reassuring way and makes you feel totally confident starting solids with your baby. What I love most is how kind and accessible she is even after the class, she really doesn\'t just "teach and go," she stays available and supportive which means so much as a first time mom. You can tell she truly cares about the families she works with. Highly, highly recommend!',
+    attribution: 'Zita Quezada · Starting Solids Class',
+  },
+  {
+    stars: 5,
+    text: 'Cannot speak highly enough of Jessica! Her passion is so evident and as a fellow SLP it is so refreshing to see. I attended her "Starting Solids" Virtual Class and left with new information that wasn\'t overwhelming. Her suggestions were very doable and approachable and I love her emphasis on "relationships first" at the dinner table! If you are on the fence about working with her do not hesistate! Thank you for the work you are doing Jess. Looking forward to applying what I learned with my 7 month old.',
+    attribution: 'Sarah K. Brown · Starting Solids Virtual Class',
+  },
+  {
+    stars: 5,
+    text: 'I took Jessica\'s virtual intro to solids class. It was so informative and helpful! It really made starting solids seem less scary. She is very approachable and knowledgeable. Highly recommend taking her class if your child is starting solids!',
+    attribution: 'Jessica Kady · Virtual Intro to Solids',
+  },
+  {
+    stars: 5,
+    text: 'I am an anxious mom and starting solids was my nightmare. I hate it, but doing it with Jess gives me some so much confidence. She finds ways to help my little guy eat things that are scary (to me) or that he just needs a little help with. I love not just following the latest "insta trends" for guidance, this is 100% expert information. I can\'t say enough great things. Also, my insurance covered it 100%! It\'s a win/win in my book! Thank you Jess for helping ME get through this phase. My son thanks you!',
+    attribution: 'Stephanie Renee · 1:1 Coaching',
+  },
+  {
+    stars: 5,
+    text: 'Jessica is the best! I was so stressed about starting solids, but she shared product recommendations (like his favorite teether sticks!) to help develop his oral and motor skills in advance. Once I took her Starting Solids webinar, I felt more confident in giving it a go. At first, my son wasn\'t that interested in food and refused a bottle, but after working with Jess, he eventually turned a corner and is thriving with a straw cup. I love sharing photos of my messy eater and still pick her brain. Couldn\'t recommend working with Jess enough!',
+    attribution: 'Kayla Pantano · Starting Solids Webinar + 1:1',
+  },
+  {
+    stars: 5,
+    text: 'The best in the business! She\'s so knowledge about feeding and makes you feel so comfortable. She has a way of explaining things that make it easy for anyone to understand. Can\'t recommend her enough!',
+    attribution: 'Megan C. Larsen · Starting Solids',
+  },
+  {
+    stars: 5,
+    text: 'Jessica was great at answering all my questions and left me feeling more confident about starting the solids journey with my baby.',
+    attribution: 'Meredith Borum · Starting Solids Class',
+  },
+  {
+    stars: 5,
+    text: 'We attended Jessica\'s Solid Starts class in Hoboken and loved it! I brought my 10 month old and she reassured me that everything I\'m doing is correct and to offering small amounts of solids! She explained the difference of gagging/choking which was extremely helpful!! She is my go to for any feeding questions.',
+    attribution: 'Marissa Schlein · Hoboken Starting Solids Class',
+  },
+  {
+    stars: 5,
+    text: 'We attended Jessica\'s Starting Solids class with our six month old and it was such a wonderful first introduction! Jessica was warm, knowledgable and had everything ready to go so we could feel comfortable we are introducing foods in an age-appropriate manner. She was so attentive to questions and made us feel excited about offering whole foods.',
+    attribution: 'Rhyan Truett Murphy · Starting Solids Class',
+  },
+  {
+    stars: 5,
+    text: 'I attended Jessica\'s "Starting Solids" class at The Bunny Hive and was so glad I did! I am a first time mom to a 5 month old and have been very anxious about starting solids with my little one, but feel incredibly more prepared and confident now. Jessica provided an incredibly informative "live" demonstration with various food examples, all while answering questions from parents. Her expertise and warm demeanor made this a really great experience!',
+    attribution: 'Jessica Barbieri · Bunny Hive Starting Solids Class',
+  },
+]
 
 const amazonPicks = [
   {
@@ -44,34 +95,9 @@ const amazonPicks = [
   },
 ]
 
-const reviewImages = [
-  '/images/starting-solids/reviews/review-1.png',
-  '/images/starting-solids/reviews/review-2.png',
-  '/images/starting-solids/reviews/review-3.png',
-  '/images/starting-solids/reviews/review-4.png',
-  '/images/starting-solids/reviews/review-5.png',
-  '/images/starting-solids/reviews/review-6.png',
-  '/images/starting-solids/reviews/review-7.png',
-  '/images/starting-solids/reviews/review-8.png',
-  '/images/starting-solids/reviews/review-9.png',
-  '/images/starting-solids/reviews/review-10.png',
-]
-
 export default function StartingSolids() {
-  const [reviewIdx, setReviewIdx] = useState(0)
-
-  useEffect(() => {
-    const t = setInterval(() => {
-      setReviewIdx((i) => (i + 1) % reviewImages.length)
-    }, 6000)
-    return () => clearInterval(t)
-  }, [])
-
-  const prevReview = () => setReviewIdx((reviewIdx - 1 + reviewImages.length) % reviewImages.length)
-  const nextReview = () => setReviewIdx((reviewIdx + 1) % reviewImages.length)
-
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white overflow-x-hidden">
       {/* Header */}
       <header className="bg-white shadow-sm fixed top-0 left-0 right-0 z-50">
         <div className="py-3 px-4 md:py-4 md:px-6 flex justify-between items-center">
@@ -162,7 +188,7 @@ export default function StartingSolids() {
           <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {/* Hoboken - Bunny Hive */}
             <div className="group rounded-2xl overflow-hidden shadow-lg bg-[#f5f0eb] flex flex-col">
-              <div className="relative h-72 md:h-96">
+              <div className="relative h-56 md:h-72">
                 <Image
                   src="/images/starting-solids/bunny-hive.jpg"
                   alt="Jessica teaching a Starting Solids class at The Bunny Hive in Hoboken"
@@ -189,7 +215,7 @@ export default function StartingSolids() {
 
             {/* Jersey City - Hudson City Kids */}
             <div className="group rounded-2xl overflow-hidden shadow-lg bg-[#f5f0eb] flex flex-col">
-              <div className="relative h-72 md:h-96">
+              <div className="relative h-56 md:h-72">
                 <Image
                   src="/images/starting-solids/hudson-city.jpg"
                   alt="Starting Solids class at Hudson City Kids in Jersey City Heights"
@@ -217,7 +243,7 @@ export default function StartingSolids() {
 
             {/* Virtual */}
             <div className="group rounded-2xl overflow-hidden shadow-lg bg-[#f5f0eb] flex flex-col">
-              <div className="relative h-72 md:h-96">
+              <div className="relative h-56 md:h-72">
                 <Image
                   src="/images/starting-solids/confident-feeders.jpg"
                   alt="Jessica offering virtual starting solids coaching over video"
@@ -246,10 +272,10 @@ export default function StartingSolids() {
       {/* Confident Feeders Program */}
       <section className="bg-[#82b2b7] text-white py-12 md:py-20 px-4 md:px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-          <div className="relative order-1 md:order-1">
+          <div className="relative order-1 md:order-1 max-w-xs sm:max-w-sm md:max-w-none mx-auto md:mx-0">
             <Image
-              src="/images/starting-solids/confident-feeders.jpg"
-              alt="Jessica providing 1:1 virtual starting solids coaching"
+              src="/images/starting-solids/confident-feeders-1on1.png"
+              alt="Jessica coaching a parent 1:1 during a starting solids session"
               width={700}
               height={800}
               className="rounded-2xl shadow-2xl w-full"
@@ -264,7 +290,7 @@ export default function StartingSolids() {
               Personalized 1:1 Starting Solids Coaching for Babies 6–10 Months.
             </p>
             <p className="text-base md:text-lg opacity-95 leading-relaxed mb-6 md:mb-8">
-              Ready to bypass the endless Google searches and move straight into stress-free family mealtimes? The Confident Feeders Program is an exclusive, 4-week intensive coaching experience designed to transition your baby to solid foods safely, seamlessly, and joyfully.
+              The Confident Feeders Program is an exclusive, 4-week intensive coaching experience designed to transition your baby to solid foods safely, seamlessly, and joyfully.
             </p>
             <div className="space-y-3 md:space-y-4 mb-6 md:mb-8">
               <div className="flex gap-3">
@@ -288,7 +314,7 @@ export default function StartingSolids() {
               href="/#contact-us"
               className="inline-block bg-white text-[#82b2b7] px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition text-sm uppercase tracking-widest"
             >
-              Apply for 1:1 Coaching
+              Book 1:1 Coaching
             </Link>
           </div>
         </div>
@@ -299,7 +325,7 @@ export default function StartingSolids() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-5 gap-8 md:gap-10 items-center">
             <div className="md:col-span-2 text-center md:text-left">
-              <div className="relative w-full max-w-xs mx-auto md:mx-0 mb-6">
+              <div className="relative w-full max-w-[220px] md:max-w-xs mx-auto md:mx-0 mb-6">
                 <Image
                   src="/images/starting-solids/amazon-favorites.jpg"
                   alt="Jessica holding her favorite starting solids feeding tools"
@@ -326,27 +352,27 @@ export default function StartingSolids() {
             </div>
 
             <div className="md:col-span-3">
-              <div className="flex gap-4 md:gap-5 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
+              <div className="grid grid-cols-2 gap-3 md:flex md:gap-5 md:overflow-x-auto md:pb-4 md:scrollbar-hide md:snap-x md:snap-mandatory">
                 {amazonPicks.map((pick, i) => (
                   <a
                     key={i}
                     href={pick.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex-shrink-0 w-64 md:w-72 snap-start bg-white rounded-2xl p-5 md:p-6 shadow-md hover:shadow-xl transition hover:-translate-y-1"
+                    className="group w-full md:w-72 md:flex-shrink-0 md:snap-start bg-white rounded-2xl p-4 md:p-6 shadow-md hover:shadow-xl transition hover:-translate-y-1"
                   >
                     <p className="text-[10px] uppercase tracking-widest text-[#82b2b7] mb-2">{pick.note}</p>
-                    <h3 className="text-lg md:text-xl font-medium text-gray-800 mb-2 group-hover:text-[#82b2b7] transition">
+                    <h3 className="text-base md:text-xl font-medium text-gray-800 mb-2 group-hover:text-[#82b2b7] transition">
                       {pick.name}
                     </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                    <p className="text-gray-600 text-xs md:text-sm leading-relaxed mb-4">
                       {pick.desc}
                     </p>
-                    <span className="text-[#82b2b7] text-sm font-medium">View on Amazon →</span>
+                    <span className="text-[#82b2b7] text-xs md:text-sm font-medium">View on Amazon →</span>
                   </a>
                 ))}
               </div>
-              <p className="text-gray-400 text-xs text-center mt-3">Swipe to see more →</p>
+              <p className="hidden md:block text-gray-400 text-xs text-center mt-3">Swipe to see more →</p>
             </div>
           </div>
         </div>
@@ -357,59 +383,7 @@ export default function StartingSolids() {
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-xs md:text-sm uppercase tracking-widest text-[#82b2b7] mb-2 md:mb-3">5-Star Google Reviews</p>
           <h2 className="text-2xl md:text-4xl font-light text-gray-800 mb-8 md:mb-12">What Parents Are Saying</h2>
-
-          <div className="relative">
-            <button
-              onClick={prevReview}
-              className="absolute -left-4 md:-left-14 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-800 w-10 h-10 md:w-12 md:h-12 rounded-full shadow-lg flex items-center justify-center transition z-10"
-              aria-label="Previous review"
-            >
-              <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button
-              onClick={nextReview}
-              className="absolute -right-4 md:-right-14 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-50 text-gray-800 w-10 h-10 md:w-12 md:h-12 rounded-full shadow-lg flex items-center justify-center transition z-10"
-              aria-label="Next review"
-            >
-              <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-
-            <div className="relative overflow-hidden rounded-xl md:rounded-2xl shadow-lg bg-[#f5f0eb] mx-6 md:mx-0">
-              <div
-                className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${reviewIdx * 100}%)` }}
-              >
-                {reviewImages.map((src, i) => (
-                  <div key={i} className="w-full flex-shrink-0 flex items-center justify-center py-6 md:py-10 px-4 md:px-10">
-                    <Image
-                      src={src}
-                      alt={`Google review ${i + 1}`}
-                      width={900}
-                      height={300}
-                      className="max-w-full h-auto mx-auto"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="flex justify-center gap-1.5 md:gap-2 mt-4 md:mt-6 flex-wrap">
-            {reviewImages.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setReviewIdx(i)}
-                className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition ${
-                  i === reviewIdx ? 'bg-[#82b2b7]' : 'bg-gray-300 hover:bg-gray-400'
-                }`}
-                aria-label={`Go to review ${i + 1}`}
-              />
-            ))}
-          </div>
+          <TestimonialCarousel testimonials={startingSolidsTestimonials} />
         </div>
       </section>
 
