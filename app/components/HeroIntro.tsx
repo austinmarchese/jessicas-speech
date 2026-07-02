@@ -1,14 +1,45 @@
 'use client'
 
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+
+const OVERLAY_DURATION_MS = 3500
 
 export default function HeroIntro() {
   const [visible, setVisible] = useState(true)
+  const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
-    const t = setTimeout(() => setVisible(false), 3500)
-    return () => clearTimeout(t)
+    const showOverlay = () => {
+      setVisible(true)
+      if (hideTimer.current) clearTimeout(hideTimer.current)
+      hideTimer.current = setTimeout(() => setVisible(false), OVERLAY_DURATION_MS)
+    }
+
+    showOverlay()
+
+    const video = document.querySelector<HTMLVideoElement>('video[poster="/images/hero-poster.jpg"]')
+    if (!video) return
+
+    let lastTime = video.currentTime
+    const onTimeUpdate = () => {
+      if (video.currentTime + 0.25 < lastTime) {
+        showOverlay()
+      }
+      lastTime = video.currentTime
+    }
+    const onSeeked = () => {
+      if (video.currentTime < 0.25) showOverlay()
+    }
+
+    video.addEventListener('timeupdate', onTimeUpdate)
+    video.addEventListener('seeked', onSeeked)
+
+    return () => {
+      video.removeEventListener('timeupdate', onTimeUpdate)
+      video.removeEventListener('seeked', onSeeked)
+      if (hideTimer.current) clearTimeout(hideTimer.current)
+    }
   }, [])
 
   return (
