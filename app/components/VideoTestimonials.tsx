@@ -15,13 +15,13 @@ const VIDEOS: VideoTestimonial[] = [
     src: '/videos/testimonial-2.mp4',
     poster: '/images/testimonial-2-poster.jpg',
     family: 'The Waterfield Family',
-    caption: 'On working with Jessica',
+    caption: 'On how Jessica helped with bottle feeding',
   },
   {
     src: '/videos/testimonial-roberts.mp4',
     poster: '/images/testimonial-roberts-poster.jpg',
     family: 'The Roberts Family',
-    caption: 'On working with Jessica',
+    caption: 'On how Jessica helped with picky eating',
   },
 ]
 
