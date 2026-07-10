@@ -14,7 +14,7 @@ const VIDEOS: VideoTestimonial[] = [
   {
     src: '/videos/testimonial-2.mp4',
     poster: '/images/testimonial-2-poster.jpg',
-    family: 'A Happy Family',
+    family: 'The Waterfield Family',
     caption: 'On working with Jessica',
   },
   {
