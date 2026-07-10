@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 type VideoTestimonial = {
   src: string
@@ -11,6 +11,12 @@ type VideoTestimonial = {
 }
 
 const VIDEOS: VideoTestimonial[] = [
+  {
+    src: '/videos/testimonial-2.mp4',
+    poster: '/images/testimonial-2-poster.jpg',
+    family: 'A Happy Family',
+    caption: 'On working with Jessica',
+  },
   {
     src: '/videos/testimonial-roberts.mp4',
     poster: '/images/testimonial-roberts-poster.jpg',
@@ -96,21 +102,80 @@ function FeaturedVideo({ video }: { video: VideoTestimonial }) {
   )
 }
 
+function VideoCard({ video, sizeClass }: { video: VideoTestimonial; sizeClass: string }) {
+  return (
+    <div className="flex flex-col">
+      <VideoPlayer video={video} sizeClass={sizeClass} />
+      <div className="text-center mt-4">
+        <div className="inline-flex gap-0.5 mb-2">
+          {[0, 1, 2, 3, 4].map((i) => (
+            <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.966a1 1 0 00.95.69h4.169c.969 0 1.371 1.24.588 1.81l-3.37 2.449a1 1 0 00-.363 1.118l1.286 3.965c.3.922-.755 1.688-1.54 1.118l-3.37-2.448a1 1 0 00-1.175 0l-3.371 2.448c-.784.57-1.838-.196-1.54-1.118l1.287-3.965a1 1 0 00-.363-1.118L2.076 8.393c-.783-.57-.38-1.81.588-1.81h4.168a1 1 0 00.951-.69l1.286-3.966z" />
+            </svg>
+          ))}
+        </div>
+        <p className="text-gray-800 font-medium text-base md:text-lg">{video.family}</p>
+        {video.caption && <p className="text-gray-500 text-sm mt-1">{video.caption}</p>}
+      </div>
+    </div>
+  )
+}
+
 export default function VideoTestimonials() {
+  const scrollerRef = useRef<HTMLDivElement>(null)
+  const [active, setActive] = useState(0)
+
   if (VIDEOS.length === 1) {
     return <FeaturedVideo video={VIDEOS[0]} />
   }
+
+  const handleScroll = () => {
+    const el = scrollerRef.current
+    if (!el) return
+    const slideWidth = el.scrollWidth / VIDEOS.length
+    setActive(Math.min(VIDEOS.length - 1, Math.round(el.scrollLeft / slideWidth)))
+  }
+
+  const scrollTo = (i: number) => {
+    const el = scrollerRef.current
+    if (!el) return
+    el.scrollTo({ left: (el.scrollWidth / VIDEOS.length) * i, behavior: 'smooth' })
+  }
+
+  const gridCols = VIDEOS.length === 2 ? 'sm:grid-cols-2 max-w-3xl' : 'sm:grid-cols-2 lg:grid-cols-3 max-w-6xl'
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-      {VIDEOS.map((v) => (
-        <div key={v.src} className="flex flex-col">
-          <VideoPlayer video={v} sizeClass="max-w-[340px] md:max-w-[420px] mx-auto" />
-          <div className="text-center mt-4">
-            <p className="text-gray-800 font-medium text-base md:text-lg">{v.family}</p>
-            {v.caption && <p className="text-gray-500 text-sm mt-1">{v.caption}</p>}
-          </div>
+    <>
+      {/* Mobile: swipe carousel */}
+      <div className="sm:hidden">
+        <div
+          ref={scrollerRef}
+          onScroll={handleScroll}
+          className="flex overflow-x-auto snap-x snap-mandatory gap-4 -mx-4 px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {VIDEOS.map((v) => (
+            <div key={v.src} className="snap-center shrink-0 w-[78%]">
+              <VideoCard video={v} sizeClass="" />
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+        <div className="flex justify-center gap-2 mt-4">
+          {VIDEOS.map((v, i) => (
+            <button
+              key={v.src}
+              onClick={() => scrollTo(i)}
+              className={`w-2 h-2 rounded-full transition ${i === active ? 'bg-[#82b2b7]' : 'bg-gray-300'}`}
+              aria-label={`Go to video ${i + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop grid */}
+      <div className={`hidden sm:grid ${gridCols} mx-auto gap-8 md:gap-10`}>
+        {VIDEOS.map((v) => (
+          <VideoCard key={v.src} video={v} sizeClass="max-w-[320px] mx-auto" />
+        ))}
+      </div>
+    </>
   )
 }

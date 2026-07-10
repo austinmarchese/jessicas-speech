@@ -107,7 +107,7 @@ export default function StartingSolids() {
               alt="Jessica's Speech and Feeding Therapy"
               width={200}
               height={92}
-              className="h-10 md:h-14 w-auto"
+              className="h-14 md:h-[5.5rem] w-auto"
             />
           </Link>
           <nav className="hidden lg:flex gap-6 text-gray-700 font-medium text-sm uppercase tracking-wide">
