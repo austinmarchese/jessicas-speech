@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/thank-you'],
+      disallow: ['/thank-you', '/baby-boot-camp'],
     },
     sitemap: 'https://jessicasspeechandfeeding.com/sitemap.xml',
   }
