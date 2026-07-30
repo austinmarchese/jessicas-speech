@@ -1,6 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+
+import FormSubmitButton from './FormSubmitButton'
 
 const CHILD_AGES = [
   'Under 6 months',
@@ -18,6 +20,16 @@ const MILESTONES_GIFT_AGES: string[] = ['Under 6 months', '6-12 months', '12-18 
 export default function ContactForm() {
   const [referralSource, setReferralSource] = useState('')
   const [childAge, setChildAge] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+
+  // Coming back via the back button can restore this form from cache mid-submit.
+  useEffect(() => {
+    const reset = (e: PageTransitionEvent) => {
+      if (e.persisted) setSubmitting(false)
+    }
+    window.addEventListener('pageshow', reset)
+    return () => window.removeEventListener('pageshow', reset)
+  }, [])
 
   const qualifiesForGift = MILESTONES_GIFT_AGES.includes(childAge)
   const nextUrl = qualifiesForGift
@@ -25,7 +37,8 @@ export default function ContactForm() {
     : 'https://jessicasspeechandfeeding.com/thank-you'
 
   // Backup for the query string above in case the form host drops it on redirect.
-  const rememberGift = () => {
+  const handleSubmit = () => {
+    setSubmitting(true)
     try {
       if (qualifiesForGift) {
         sessionStorage.setItem('milestonesGift', '1')
@@ -38,7 +51,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form action="https://formsubmit.co/jess@jessicasspeechandfeeding.com" method="POST" onSubmit={rememberGift} className="space-y-4 md:space-y-6">
+    <form action="https://formsubmit.co/jess@jessicasspeechandfeeding.com" method="POST" onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
       <input type="hidden" name="_subject" value="New inquiry from Jessica's Speech website!" />
       <input type="hidden" name="_captcha" value="false" />
       <input type="hidden" name="_next" value={nextUrl} />
@@ -122,9 +135,12 @@ export default function ContactForm() {
       <p className="text-xs md:text-sm text-gray-600 italic">
         In-home and daycare-based services are currently offered to families within approximately a 2-mile radius of Hoboken. Virtual coaching is available.
       </p>
-      <button type="submit" className="w-full bg-[#82b2b7] text-white py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg hover:bg-[#6a9a9f] transition uppercase tracking-wider">
-        Send
-      </button>
+      <FormSubmitButton pending={submitting} label="Send" pendingLabel="Sending..." />
+      {submitting && (
+        <p className="text-xs md:text-sm text-gray-500 text-center" role="status">
+          Sending your message, this can take a few seconds.
+        </p>
+      )}
     </form>
   )
 }

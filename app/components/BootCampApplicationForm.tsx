@@ -1,6 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+
+import FormSubmitButton from './FormSubmitButton'
 
 const inputClass =
   'w-full px-3 py-2.5 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#82b2b7] bg-[#eee] text-base'
@@ -8,9 +10,20 @@ const labelClass = 'block text-gray-700 mb-2 text-sm md:text-base'
 
 export default function BootCampApplicationForm() {
   const [referralSource, setReferralSource] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+
+  // Coming back via the back button can restore this form from cache mid-submit.
+  useEffect(() => {
+    const reset = (e: PageTransitionEvent) => {
+      if (e.persisted) setSubmitting(false)
+    }
+    window.addEventListener('pageshow', reset)
+    return () => window.removeEventListener('pageshow', reset)
+  }, [])
 
   // Every age option here is under 12 months, so the milestones guide always applies.
-  const rememberGift = () => {
+  const handleSubmit = () => {
+    setSubmitting(true)
     try {
       sessionStorage.setItem('milestonesGift', '1')
     } catch {
@@ -22,7 +35,7 @@ export default function BootCampApplicationForm() {
     <form
       action="https://formsubmit.co/jess@jessicasspeechandfeeding.com"
       method="POST"
-      onSubmit={rememberGift}
+      onSubmit={handleSubmit}
       className="space-y-4 md:space-y-6"
     >
       <input type="hidden" name="_subject" value="New Baby Boot Camp application!" />
@@ -146,12 +159,16 @@ export default function BootCampApplicationForm() {
         and I read every application myself. You will hear back from me with the dates for the next cohort.
       </p>
 
-      <button
-        type="submit"
-        className="w-full bg-[#82b2b7] text-white py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg hover:bg-[#6a9a9f] transition uppercase tracking-wider"
-      >
-        Apply for the next boot camp
-      </button>
+      <FormSubmitButton
+        pending={submitting}
+        label="Apply for the next boot camp"
+        pendingLabel="Sending..."
+      />
+      {submitting && (
+        <p className="text-xs md:text-sm text-gray-500 text-center" role="status">
+          Sending your application, this can take a few seconds.
+        </p>
+      )}
     </form>
   )
 }
