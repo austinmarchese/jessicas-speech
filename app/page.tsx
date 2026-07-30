@@ -7,6 +7,7 @@ import ContactForm from './components/ContactForm'
 import MobileMenu from './components/MobileMenu'
 import HeroIntro from './components/HeroIntro'
 import ReviewStats from './components/ReviewStats'
+import AwardBadge from './components/AwardBadge'
 
 export default function Home() {
   return (
@@ -169,8 +170,14 @@ export default function Home() {
             </div>
             <div className="order-1 md:order-2">
               <p className="text-xs md:text-sm uppercase tracking-widest text-[#82b2b7] mb-3 md:mb-4">Your Certified Speech Language Pathologist</p>
-              <h2 className="text-3xl md:text-4xl font-light text-gray-800 mb-2">Jessica Aleman</h2>
-              <p className="text-lg md:text-xl text-[#82b2b7] mb-4 md:mb-6">MSEd, CCC-SLP</p>
+              <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6 mb-4 md:mb-6">
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-light text-gray-800 mb-2">Jessica Aleman</h2>
+                  <p className="text-lg md:text-xl text-[#82b2b7]">MSEd, CCC-SLP</p>
+                </div>
+                <div className="hidden md:block w-px self-stretch bg-gray-200" />
+                <AwardBadge />
+              </div>
               {/* Condensed mobile version */}
               <p className="md:hidden text-gray-600 text-base leading-relaxed">
                 I&apos;m Jessica, a Hoboken speech-language pathologist. As a child, I lived with untreated mouth breathing, a tongue tie, and a high, narrow palate, so I know how much foundational care matters. My mission is to provide holistic, compassionate therapy that gets to the root cause of speech, feeding, and oral development issues, and to partner with families on a clear, careful path to helping their children thrive.

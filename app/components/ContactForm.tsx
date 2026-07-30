@@ -2,14 +2,46 @@
 
 import { useState } from 'react'
 
+const CHILD_AGES = [
+  'Under 6 months',
+  '6-12 months',
+  '12-18 months',
+  '18 months - 2 years',
+  '2-3 years',
+  '3-5 years',
+  '5+ years',
+] as const
+
+// The milestones PDF covers the 12-month mark, so it is only relevant under 18 months.
+const MILESTONES_GIFT_AGES: string[] = ['Under 6 months', '6-12 months', '12-18 months']
+
 export default function ContactForm() {
   const [referralSource, setReferralSource] = useState('')
+  const [childAge, setChildAge] = useState('')
+
+  const qualifiesForGift = MILESTONES_GIFT_AGES.includes(childAge)
+  const nextUrl = qualifiesForGift
+    ? 'https://jessicasspeechandfeeding.com/thank-you?milestones=1'
+    : 'https://jessicasspeechandfeeding.com/thank-you'
+
+  // Backup for the query string above in case the form host drops it on redirect.
+  const rememberGift = () => {
+    try {
+      if (qualifiesForGift) {
+        sessionStorage.setItem('milestonesGift', '1')
+      } else {
+        sessionStorage.removeItem('milestonesGift')
+      }
+    } catch {
+      // sessionStorage can be unavailable in private browsing; the query param still covers it.
+    }
+  }
 
   return (
-    <form action="https://formsubmit.co/jess@jessicasspeechandfeeding.com" method="POST" className="space-y-4 md:space-y-6">
+    <form action="https://formsubmit.co/jess@jessicasspeechandfeeding.com" method="POST" onSubmit={rememberGift} className="space-y-4 md:space-y-6">
       <input type="hidden" name="_subject" value="New inquiry from Jessica's Speech website!" />
       <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_next" value="https://jessicasspeechandfeeding.com/thank-you" />
+      <input type="hidden" name="_next" value={nextUrl} />
       <input type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
       <div className="grid grid-cols-2 gap-4">
         <div>
@@ -58,6 +90,21 @@ export default function ContactForm() {
           />
         </div>
       )}
+      <div>
+        <label className="block text-gray-700 mb-2 text-sm md:text-base">How old is your child? *</label>
+        <select
+          name="child_age"
+          value={childAge}
+          onChange={(e) => setChildAge(e.target.value)}
+          className="w-full px-3 py-2.5 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#82b2b7] bg-[#eee] text-base"
+          required
+        >
+          <option value="">Select one option</option>
+          {CHILD_AGES.map((age) => (
+            <option key={age} value={age}>{age}</option>
+          ))}
+        </select>
+      </div>
       <div>
         <label className="block text-gray-700 mb-2 text-sm md:text-base">Where do you live? *</label>
         <select name="location" className="w-full px-3 py-2.5 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#82b2b7] bg-[#eee] text-base" required>

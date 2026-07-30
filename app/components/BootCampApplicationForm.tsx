@@ -9,15 +9,25 @@ const labelClass = 'block text-gray-700 mb-2 text-sm md:text-base'
 export default function BootCampApplicationForm() {
   const [referralSource, setReferralSource] = useState('')
 
+  // Every age option here is under 12 months, so the milestones guide always applies.
+  const rememberGift = () => {
+    try {
+      sessionStorage.setItem('milestonesGift', '1')
+    } catch {
+      // sessionStorage can be unavailable in private browsing; the query param still covers it.
+    }
+  }
+
   return (
     <form
       action="https://formsubmit.co/jess@jessicasspeechandfeeding.com"
       method="POST"
+      onSubmit={rememberGift}
       className="space-y-4 md:space-y-6"
     >
       <input type="hidden" name="_subject" value="New Baby Boot Camp application!" />
       <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_next" value="https://jessicasspeechandfeeding.com/thank-you" />
+      <input type="hidden" name="_next" value="https://jessicasspeechandfeeding.com/thank-you?milestones=1" />
       <input type="hidden" name="form_source" value="Baby Boot Camp application" />
       <input type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
 

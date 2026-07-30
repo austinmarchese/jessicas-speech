@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-const TARGET = 29
+const TARGET = 30
 const RATING = 5.0
 const DURATION_MS = 1500
 

@@ -1,7 +1,15 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function ThankYou() {
+import MilestonesGift from '../components/MilestonesGift'
+
+export default function ThankYou({
+  searchParams,
+}: {
+  searchParams: { milestones?: string }
+}) {
+  const showMilestones = searchParams.milestones === '1'
+
   return (
     <main className="min-h-screen bg-[#f5f0eb] flex flex-col">
       {/* Header */}
@@ -19,7 +27,7 @@ export default function ThankYou() {
 
       {/* Success Message */}
       <div className="flex-1 flex items-center justify-center px-4 py-12">
-        <div className="max-w-lg text-center">
+        <div className="max-w-xl text-center">
           <div className="w-20 h-20 bg-[#82b2b7] rounded-full flex items-center justify-center mx-auto mb-6">
             <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -37,7 +45,9 @@ export default function ThankYou() {
           <p className="text-gray-500 mb-8">
             In the meantime, feel free to explore more about my services.
           </p>
-          
+
+          <MilestonesGift initialVisible={showMilestones} />
+
           <Link 
             href="/"
             className="inline-block bg-[#82b2b7] text-white px-8 py-3 rounded-full font-medium hover:bg-[#6a9a9f] transition"
