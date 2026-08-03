@@ -19,7 +19,8 @@ const GIFTS_BY_AGE: Record<string, string[]> = {
   'Under 6 months': ['12'],
   '6-12 months': ['12'],
   '12-18 months': ['12', '18'],
-  '18 months - 2 years': ['18'],
+  '18 months - 2 years': ['18', '24'],
+  '2-3 years': ['24'],
 }
 
 export default function ContactForm() {

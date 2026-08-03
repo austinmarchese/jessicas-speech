@@ -24,11 +24,18 @@ const GIFTS: Record<string, Gift> = {
       'My free guide to what to expect at 18 months across speech, understanding, play, and feeding, plus the red flags worth a call.',
     href: '/downloads/18-month-developmental-milestones.pdf',
   },
+  '24': {
+    id: '24',
+    title: "Your Toddler's 2-Year Developmental Milestones",
+    description:
+      'My free guide to what to expect at 2 years across speech, understanding, play, and feeding, plus the red flags worth a call.',
+    href: '/downloads/2-year-developmental-milestones.pdf',
+  },
 }
 
 // Only keep ids we actually have a gift for, in a stable order.
 const normalize = (ids: string[]): string[] =>
-  ['12', '18'].filter((id) => ids.includes(id))
+  ['12', '18', '24'].filter((id) => ids.includes(id))
 
 export default function MilestonesGift({ initialGifts = [] }: { initialGifts?: string[] }) {
   const [gifts, setGifts] = useState<string[]>(() => normalize(initialGifts))
