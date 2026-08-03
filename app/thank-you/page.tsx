@@ -6,9 +6,9 @@ import MilestonesGift from '../components/MilestonesGift'
 export default function ThankYou({
   searchParams,
 }: {
-  searchParams: { milestones?: string }
+  searchParams: { gifts?: string }
 }) {
-  const showMilestones = searchParams.milestones === '1'
+  const initialGifts = (searchParams.gifts ?? '').split(',').map((id) => id.trim()).filter(Boolean)
 
   return (
     <main className="min-h-screen bg-[#f5f0eb] flex flex-col">
@@ -46,7 +46,7 @@ export default function ThankYou({
             In the meantime, feel free to explore more about my services.
           </p>
 
-          <MilestonesGift initialVisible={showMilestones} />
+          <MilestonesGift initialGifts={initialGifts} />
 
           <Link 
             href="/"

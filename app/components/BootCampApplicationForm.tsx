@@ -21,11 +21,11 @@ export default function BootCampApplicationForm() {
     return () => window.removeEventListener('pageshow', reset)
   }, [])
 
-  // Every age option here is under 12 months, so the milestones guide always applies.
+  // Every age option here is under 12 months, so the 12-month milestones guide always applies.
   const handleSubmit = () => {
     setSubmitting(true)
     try {
-      sessionStorage.setItem('milestonesGift', '1')
+      sessionStorage.setItem('milestonesGifts', '12')
     } catch {
       // sessionStorage can be unavailable in private browsing; the query param still covers it.
     }
@@ -40,7 +40,7 @@ export default function BootCampApplicationForm() {
     >
       <input type="hidden" name="_subject" value="New Baby Boot Camp application!" />
       <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_next" value="https://jessicasspeechandfeeding.com/thank-you?milestones=1" />
+      <input type="hidden" name="_next" value="https://jessicasspeechandfeeding.com/thank-you?gifts=12" />
       <input type="hidden" name="form_source" value="Baby Boot Camp application" />
       <input type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
 

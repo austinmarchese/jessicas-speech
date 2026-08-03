@@ -14,8 +14,13 @@ const CHILD_AGES = [
   '5+ years',
 ] as const
 
-// The milestones PDF covers the 12-month mark, so it is only relevant under 18 months.
-const MILESTONES_GIFT_AGES: string[] = ['Under 6 months', '6-12 months', '12-18 months']
+// Which milestone guides to gift for each child age. Ids map to gifts in MilestonesGift.
+const GIFTS_BY_AGE: Record<string, string[]> = {
+  'Under 6 months': ['12'],
+  '6-12 months': ['12'],
+  '12-18 months': ['12', '18'],
+  '18 months - 2 years': ['18'],
+}
 
 export default function ContactForm() {
   const [referralSource, setReferralSource] = useState('')
@@ -31,19 +36,19 @@ export default function ContactForm() {
     return () => window.removeEventListener('pageshow', reset)
   }, [])
 
-  const qualifiesForGift = MILESTONES_GIFT_AGES.includes(childAge)
-  const nextUrl = qualifiesForGift
-    ? 'https://jessicasspeechandfeeding.com/thank-you?milestones=1'
+  const giftsParam = (GIFTS_BY_AGE[childAge] ?? []).join(',')
+  const nextUrl = giftsParam
+    ? `https://jessicasspeechandfeeding.com/thank-you?gifts=${giftsParam}`
     : 'https://jessicasspeechandfeeding.com/thank-you'
 
   // Backup for the query string above in case the form host drops it on redirect.
   const handleSubmit = () => {
     setSubmitting(true)
     try {
-      if (qualifiesForGift) {
-        sessionStorage.setItem('milestonesGift', '1')
+      if (giftsParam) {
+        sessionStorage.setItem('milestonesGifts', giftsParam)
       } else {
-        sessionStorage.removeItem('milestonesGift')
+        sessionStorage.removeItem('milestonesGifts')
       }
     } catch {
       // sessionStorage can be unavailable in private browsing; the query param still covers it.
