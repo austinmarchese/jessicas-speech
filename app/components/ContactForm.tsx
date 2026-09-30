@@ -1,8 +1,9 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type FormEvent } from 'react'
 
 import FormSubmitButton from './FormSubmitButton'
+import { useFormSubmitFallback } from './useFormSubmitFallback'
 
 const CHILD_AGES = [
   'Under 6 months',
@@ -27,6 +28,7 @@ export default function ContactForm() {
   const [referralSource, setReferralSource] = useState('')
   const [childAge, setChildAge] = useState('')
   const [submitting, setSubmitting] = useState(false)
+  const startFallback = useFormSubmitFallback()
 
   // Coming back via the back button can restore this form from cache mid-submit.
   useEffect(() => {
@@ -43,8 +45,9 @@ export default function ContactForm() {
     : 'https://jessicasspeechandfeeding.com/thank-you'
 
   // Backup for the query string above in case the form host drops it on redirect.
-  const handleSubmit = () => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     setSubmitting(true)
+    startFallback(e)
     try {
       if (giftsParam) {
         sessionStorage.setItem('milestonesGifts', giftsParam)

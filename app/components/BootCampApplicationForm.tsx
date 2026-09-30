@@ -1,8 +1,9 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type FormEvent } from 'react'
 
 import FormSubmitButton from './FormSubmitButton'
+import { useFormSubmitFallback } from './useFormSubmitFallback'
 
 const inputClass =
   'w-full px-3 py-2.5 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#82b2b7] bg-[#eee] text-base'
@@ -11,6 +12,7 @@ const labelClass = 'block text-gray-700 mb-2 text-sm md:text-base'
 export default function BootCampApplicationForm() {
   const [referralSource, setReferralSource] = useState('')
   const [submitting, setSubmitting] = useState(false)
+  const startFallback = useFormSubmitFallback()
 
   // Coming back via the back button can restore this form from cache mid-submit.
   useEffect(() => {
@@ -22,8 +24,9 @@ export default function BootCampApplicationForm() {
   }, [])
 
   // Every age option here is under 12 months, so the 12-month milestones guide always applies.
-  const handleSubmit = () => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     setSubmitting(true)
+    startFallback(e)
     try {
       sessionStorage.setItem('milestonesGifts', '12')
     } catch {
